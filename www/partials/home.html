@@ -1,0 +1,25 @@
+
+       
+        <div id="sp-nav"  ng-include="'partials/menu.html'"></div>
+
+        <div id="sp-page">
+            <div ng-include="'partials/header.html'"></div>
+
+            <div id="content">
+
+                <article ng-repeat="article in articles"> 
+                    <img src="{{article.img}}" />
+                    <h2><a href="blog-single-post.html">{{article.title}}</a></h2>
+                    <p>
+                        {{article.details}}
+                    </p>
+                </article>
+
+              
+
+               
+
+            </div>
+            <div class="subFooter">Copyright 2013. All rights reserved.</div>
+        </div>
+

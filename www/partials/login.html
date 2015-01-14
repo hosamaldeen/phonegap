@@ -1,0 +1,26 @@
+<div id="sp-nav" ng-include="'partials/menu.html'"></div>
+
+<div id="sp-page">
+    <div ng-include="'partials/header.html'"></div>
+
+
+    <div id="content">
+        <br><br>
+        <form ng-init="{wrongPasswod:false}" class='login-form' novalidate>
+            <div ng-show="wrongPasswod"  class="alert alert-danger" role="alert"> The Username Or Password Is Incorrect</div>
+
+            User Name:<br>
+            <input type="text" class="form-control" placeholder="Enter User Name" ng-model="username"><br>
+            Password:<br>
+            <input type="password" class="form-control" placeholder="Enter Pasword" ng-model="password">
+            <br><br>
+            <button class="btn btn-primary center-block" ng-click="login()">Login</button>
+        </form>
+
+    </div>
+    <div class="subFooter">Copyright 2013. All rights reserved.</div>
+</div>
+
+
+
+

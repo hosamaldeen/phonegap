@@ -1,0 +1,40 @@
+<div id="sp-nav"  ng-include="'partials/menu.html'"></div>
+
+<div id="sp-page">
+    <div ng-include="'partials/header.html'"></div>
+
+    <div id="content" style="text-align:center;" >
+
+        <div class="o-team">
+            <div class="o-team-person" style="width: auto">
+                <img src="{{account.img}}" />
+                <h4>{{account.name}}</h4>
+                <div class="h-line50"></div>
+                <p>{{account.details}}</p>
+            </div>
+
+
+        </div>
+        <hr>
+        <div>
+            <div class="o-team-person" style="width: auto">
+                <h5>Edit Account</h5>
+            </div>
+            <input type="text" class="form-control" name="username" value="{{account.name}}" />
+            <input type="text" class="form-control" name="details" value="{{account.details}}" />
+            
+            <img src="{{account.img}}" /> <input type="button" class="btn btn-warning "  id="camera" ng-click="take_photo()" value="Take a photo" /> <br/><br/>
+            <input type="button" class="btn btn-primary"  id="save" value="save" name="save"  />
+        </div>
+
+    </div>
+
+    <div class="subFooter">Copyright 2013. All rights reserved.</div>
+</div>
+
+<script>
+    console.log('here');
+    $(document).ready({
+       alert('1'); 
+    });
+</script>
