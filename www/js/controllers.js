@@ -51,7 +51,7 @@ angular.module('myApp.controllers', [])
                 $scope.pageTitle = "My Account";
 
                 navigator.camera.getPicture(onSuccess, onFail, {quality: 50,
-                    destinationType: Camera.DestinationType.DATA_URL
+                    destinationType: navigator.camera.DestinationType.DATA_URL
                 });
 
                 function onSuccess(imageData) {
