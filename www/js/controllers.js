@@ -55,7 +55,7 @@ angular.module('myApp.controllers', [])
                     try {
                         navigator.camera.getPicture(onSuccess, onFail, {
                             quality: 60,
-                            destinationType: Camera.DestinationType.DATA_URL,
+                            destinationType: navigator.camera.DestinationType,
                             sourceType: 1
                         });
                     }
