@@ -49,24 +49,28 @@ angular.module('myApp.controllers', [])
             }])
         .controller('MyAccountCtrl', ['$scope', '$http', 'checkLogin', function($scope, $http, checkLogin) {
                 $scope.pageTitle = "My Account";
-                try {
-                    navigator.camera.getPicture(onSuccess, onFail, {quality: 50,
-                    destinationType: navigator.camera.DestinationType.DATA_URL
-                });
+                navigator.notification.alert('You are the winner!');
 
-                }
-                catch (err) {
-                    alert(err.message) ;
-                }
-               
-                function onSuccess(imageData) {
-                    var image = document.getElementById('camera');
-                    image.src = "data:image/jpeg;base64," + imageData;
-                }
+                $scope.take_photo = function() {
+                    try {
+                        navigator.camera.getPicture(onSuccess, onFail, {
+                            quality: 60,
+                            destinationType: Camera.DestinationType.DATA_URL,
+                            sourceType: 1
+                        });
+                    }
+                    catch (err) {
+                         navigator.notification.alert(err.message);
+                    }
 
-                function onFail(message) {
-                    alert('Failed because: ' + message);
-                }
+                    function onSuccess(imageData) {
+                        var image = document.getElementById('myImage');
+                        image.src = "data:image/jpeg;base64," + imageData;
+                    }
+                    function onFail(message) {
+                        alert('Failed beause' + message);
+                    }
+                };
 
                 var page = "getAccount";
                 $http.get(site + page)
