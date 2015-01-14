@@ -50,20 +50,19 @@ angular.module('myApp.controllers', [])
         .controller('MyAccountCtrl', ['$scope', '$http', 'checkLogin', function($scope, $http, checkLogin) {
                 $scope.pageTitle = "My Account";
 
-                $scope.take_photo = function() {
-                    navigator.camera.getPicture(photoSuccess, function() {
-                    }, {quality: 50,
-                        destinationType: pictDestinationType.FILE_URI});
-                };
-                var photoSuccess = function (imageUriToUpload) {
-                    
-                    $scope.img = imageUriToUpload ;
-                    var url = encodeURI(site+"save_image");
+                navigator.camera.getPicture(onSuccess, onFail, {quality: 50,
+                    destinationType: Camera.DestinationType.DATA_URL
+                });
 
-                    var ft = new FileTransfer();
-                    ft.upload(imageUriToUpload, url, function(){}, function(){});
+                function onSuccess(imageData) {
+                    var image = document.getElementById('camera');
+                    image.src = "data:image/jpeg;base64," + imageData;
                 }
-               
+
+                function onFail(message) {
+                    alert('Failed because: ' + message);
+                }
+
                 var page = "getAccount";
                 $http.get(site + page)
                         .success(function(response) {
