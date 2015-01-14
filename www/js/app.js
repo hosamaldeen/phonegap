@@ -1,5 +1,5 @@
 'use strict';
-var site = "http://localhost/phonegap_server/";
+var site = "http://estore.ematajer.com/phonegap/";
 
 angular.module('myApp', [
     'shoppinpal.mobile-menu',
