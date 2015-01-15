@@ -24,12 +24,14 @@
             <input type="text" class="form-control" name="username" id="username" value="{{account.name}}" />
             <input type="text" class="form-control" name="details" id="details" value="{{account.details}}" />
 
-            <!--            <img id="myImage" src="{{account.img}}" /> 
-            
-                        <button camera ng-model='myPicture'>Take Picture</button>-->
+            <img id="myImage" src="{{account.img}}" /> 
+            <input type="button" class="btn btn-warning " ng-click="take_photo()" value="Take a photo" />
+            <input type="button" class="btn btn-warning " ng-click="take_photo2()" value="Take a photo 2" />
+
+            <!--<button ng-model='myPicture'>Take Picture</button>-->
 
 
-            <button camera ng-model='myPicture'>Take Picture</button>
+<!--            <button camera ng-model='myPicture'>Take Picture</button>
 
             <ul ng-repeat="onepic in myPictures">
                 <li style="list-style: none">
@@ -39,7 +41,7 @@
                            height="390" 
                            alt="error"/>
                 </li>
-            </ul>
+            </ul>-->
             
             <br/><br/>
             <input type="button" class="btn btn-primary"  id="save" value="save" name="save"  />

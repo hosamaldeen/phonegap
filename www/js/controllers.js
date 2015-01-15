@@ -168,16 +168,37 @@ angular.module('myApp.controllers', [])
                 }
 
 
-                $scope.myPictures = [];
-                $scope.$watch('myPicture', function(value) {
-                    if (value) {
-                        $scope.myPictures.push(value);
-                    }
-                }, true);
-                
-//                $scope.take_photo = function() {
-//                    navigator.notification.alert('hi');
-//                };
+//                $scope.myPictures = [];
+//                $scope.$watch('myPicture', function(value) {
+//                    if (value) {
+//                        $scope.myPictures.push(value);
+//                    }
+//                }, true);
+//                
+                $scope.take_photo = function() {
+                    
+                     navigator.camera.getPicture(
+                                function(imageURI) {
+                                   $('#myImage').attr('src',imageURI);
+                                },
+                                function(err) {
+                                   alert(err);
+                                }, {quality: 50,
+                            destinationType: Camera.DestinationType.FILE_URI});
+                    
+                };
+                $scope.take_photo2 = function() {
+                    
+                     navigator.camera.getPicture(
+                                function(imageURI) {
+                                   $('#myImage').attr('src',imageURI);
+                                },
+                                function(err) {
+                                   alert(err);
+                                }, {quality: 50,
+                            destinationType: navigator.camera.DestinationType.FILE_URI});
+                    
+                };
 
                 var page = "getAccount";
                 $http.get(site + page)
