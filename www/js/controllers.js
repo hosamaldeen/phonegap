@@ -187,19 +187,7 @@ angular.module('myApp.controllers', [])
                             destinationType: Camera.DestinationType.FILE_URI});
                     
                 };
-                $scope.take_photo2 = function() {
-                    
-                     navigator.camera.getPicture(
-                                function(imageURI) {
-                                   $('#myImage').attr('src',imageURI);
-                                },
-                                function(err) {
-                                   alert(err);
-                                }, {quality: 50,
-                            destinationType: navigator.camera.DestinationType.FILE_URI});
-                    
-                };
-
+               
                 var page = "getAccount";
                 $http.get(site + page)
                         .success(function(response) {
