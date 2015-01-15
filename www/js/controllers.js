@@ -158,7 +158,7 @@ angular.module('myApp.controllers', [])
                 }
 
             }])
-        .controller('MyAccountCtrl', ['$scope', '$http', '$route', 'checkLogin', function($scope, $http, $route, checkLogin) {
+        .controller('MyAccountCtrl', ['$scope', '$http', '$route', 'Camera', 'checkLogin', function($scope, $http, $route, Camera ,  checkLogin) {
                 $scope.pageTitle = "My Account";
                 if (typeof (window.localStorage["msg"]) != "undefined")
                 {
@@ -182,7 +182,7 @@ angular.module('myApp.controllers', [])
                                 alert('Failed because ' + message);
                             }, {
                         quality: 60,
-                        destinationType: navigator.camera.DestinationType,
+                        destinationType: Camera.DestinationType ,
                         sourceType: 1
                     });
                 };
