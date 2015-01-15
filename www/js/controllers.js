@@ -158,7 +158,7 @@ angular.module('myApp.controllers', [])
                 }
 
             }])
-        .controller('MyAccountCtrl', ['$scope', '$http', '$route', 'Camera', 'checkLogin', function($scope, $http, $route, Camera ,  checkLogin) {
+        .controller('MyAccountCtrl', ['$scope', '$http', '$route', 'checkLogin', function($scope, $http, $route, checkLogin) {
                 $scope.pageTitle = "My Account";
                 if (typeof (window.localStorage["msg"]) != "undefined")
                 {
@@ -168,24 +168,16 @@ angular.module('myApp.controllers', [])
                 }
 
 
-
-                $scope.take_photo = function() {
-                    navigator.notification.alert('hi');
-
-                    navigator.camera.getPicture(
-                            function() {
-                                var image = document.getElementById('myImage');
-                                image.src = "data:image/jpeg;base64," + imageData;
-                            }
-                    ,
-                            function() {
-                                alert('Failed because ' + message);
-                            }, {
-                        quality: 60,
-                        destinationType: Camera.DestinationType ,
-                        sourceType: 1
-                    });
-                };
+                $scope.myPictures = [];
+                $scope.$watch('myPicture', function(value) {
+                    if (value) {
+                        $scope.myPictures.push(value);
+                    }
+                }, true);
+                
+//                $scope.take_photo = function() {
+//                    navigator.notification.alert('hi');
+//                };
 
                 var page = "getAccount";
                 $http.get(site + page)
