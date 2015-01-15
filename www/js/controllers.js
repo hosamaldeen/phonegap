@@ -47,9 +47,17 @@ angular.module('myApp.controllers', [])
                 $location.url('/login');
 
             }])
-        .controller('MyAccountCtrl', ['$scope', '$http', 'checkLogin', function($scope, $http, checkLogin) {
-                $scope.pageTitle = "My Account";
-               
+        .controller('TakePhotoCtrl', ['$scope', '$location', function($scope, $location) {
+                
+            }])
+        .controller('MyAccountCtrl', ['$scope', '$http','$route' ,  'checkLogin', function($scope, $http, $route ,  checkLogin) {
+               $scope.pageTitle = "My Account";
+               if(typeof (window.localStorage["msg"]) != "undefined")
+               {
+                    $scope.showMsg =true ;
+                    $scope.msg =window.localStorage["msg"] ;
+                    localStorage.removeItem('msg');
+               }
                 $scope.take_photo = function() {
                     navigator.notification.alert('hi');
                     
@@ -68,12 +76,26 @@ angular.module('myApp.controllers', [])
 //                        alert('Failed because ' + message);
 //                    }
                 };
-
+               
                 var page = "getAccount";
                 $http.get(site + page)
                         .success(function(response) {
                             $scope.account = response;
                         });
+                        
+                $('#save').click(function(){
+                    var u = $("#username").val();
+                    var d = $("#details").val();
+                    
+                     var page = "editAccount?u="+u+"&d="+d;
+                    $http.get(site + page)
+                        .success(function(response) {
+                           window.localStorage["msg"] = 'your account has been edited'; 
+                           $route.reload();
+                   
+                        });
+                        
+                });
 
             }])
 

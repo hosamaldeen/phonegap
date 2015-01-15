@@ -4,6 +4,7 @@
     <div ng-include="'partials/header.html'"></div>
 
     <div id="content" style="text-align:center;" >
+        <div ng-show="showMsg"  class="alert alert-success" role="alert"> {{msg}}</div>
 
         <div class="o-team">
             <div class="o-team-person" style="width: auto">
@@ -20,8 +21,8 @@
             <div class="o-team-person" style="width: auto">
                 <h5>Edit Account</h5>
             </div>
-            <input type="text" class="form-control" name="username" value="{{account.name}}" />
-            <input type="text" class="form-control" name="details" value="{{account.details}}" />
+            <input type="text" class="form-control" name="username" id="username" value="{{account.name}}" />
+            <input type="text" class="form-control" name="details" id="details" value="{{account.details}}" />
             
             <img src="{{account.img}}" /> <input type="button" class="btn btn-warning "  id="myImage" ng-click="take_photo()" value="Take a photo" /> <br/><br/>
             <input type="button" class="btn btn-primary"  id="save" value="save" name="save"  />
