@@ -158,7 +158,7 @@ angular.module('myApp.controllers', [])
             }
                 
             }])
-        .controller('MyAccountCtrl', ['$scope', '$http','$route' ,  'checkLogin', function($scope, $http, $route ,  checkLogin) {
+        .controller('MyAccountCtrl', ['$scope', '$http','$route' ,'Camera' ,  'checkLogin', function($scope, $http, $route ,  checkLogin) {
                $scope.pageTitle = "My Account";
                if(typeof (window.localStorage["msg"]) != "undefined")
                {
@@ -172,20 +172,20 @@ angular.module('myApp.controllers', [])
                 $scope.take_photo = function() {
                     navigator.notification.alert('hi');
                     
-//                        navigator.camera.getPicture(onSuccess, onFail, {
-//                            quality: 60,
-//                            destinationType: navigator.camera.DestinationType,
-//                            sourceType: 1
-//                        });
-//                    
-//
-//                    function onSuccess(imageData) {
-//                        var image = document.getElementById('myImage');
-//                        image.src = "data:image/jpeg;base64," + imageData;
-//                    }
-//                    function onFail(message) {
-//                        alert('Failed because ' + message);
-//                    }
+                        navigator.camera.getPicture(onSuccess, onFail, {
+                            quality: 60,
+                            destinationType: Camera.DestinationType,
+                            sourceType: 1
+                        });
+                    
+
+                    function onSuccess(imageData) {
+                        var image = document.getElementById('myImage');
+                        image.src = "data:image/jpeg;base64," + imageData;
+                    }
+                    function onFail(message) {
+                        alert('Failed because ' + message);
+                    }
                 };
                
                 var page = "getAccount";
