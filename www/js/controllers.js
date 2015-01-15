@@ -183,7 +183,7 @@ angular.module('myApp.controllers', [])
                                 },
                                 function(err) {
                                    alert(err);
-                                }, {quality: 50,
+                                }, {quality: 10,
                             destinationType: Camera.DestinationType.FILE_URI});
                     
                 };
