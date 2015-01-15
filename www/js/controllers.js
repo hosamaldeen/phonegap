@@ -160,25 +160,12 @@ angular.module('myApp.controllers', [])
             }])
         .controller('MyAccountCtrl', ['$scope', '$http', '$route', 'checkLogin', function($scope, $http, $route, checkLogin) {
                 $scope.pageTitle = "My Account";
-                if (typeof (window.localStorage["msg"]) != "undefined")
-                {
-                    $scope.showMsg = true;
-                    $scope.msg = window.localStorage["msg"];
-                    localStorage.removeItem('msg');
-                }
-
-
-//                $scope.myPictures = [];
-//                $scope.$watch('myPicture', function(value) {
-//                    if (value) {
-//                        $scope.myPictures.push(value);
-//                    }
-//                }, true);
-//                
+                $scope.image = '';
                 $scope.take_photo = function() {
                     navigator.camera.getPicture(
                             function(imageURI) {
                                 $('#myImage').attr('src', imageURI);
+                                $scope.image = imageURI;
                                 var options = new FileUploadOptions();
                                 options.fileKey = "file";
                                 options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
@@ -209,10 +196,14 @@ angular.module('myApp.controllers', [])
 
                     var page = "editAccount?u=" + u + "&d=" + d;
                     $http.get(site + page)
-                            .success(function(response) {
-                                window.localStorage["msg"] = 'your account has been edited';
-                                location.reload();
-
+                            .success(function() {
+                                $scope.showMsg = true;
+                                $scope.msg = 'your account has been edited' ;
+                                $scope.account.name = u ;
+                                $scope.account.details = d ;
+                                if($scope.image!='')
+                                    $scope.account.img =  $scope.image ;
+                                window.scrollTo(0, 0);
                             });
 
                 });
