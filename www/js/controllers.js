@@ -176,18 +176,27 @@ angular.module('myApp.controllers', [])
 //                }, true);
 //                
                 $scope.take_photo = function() {
-                    
-                     navigator.camera.getPicture(
-                                function(imageURI) {
-                                   $('#myImage').attr('src',imageURI);
-                                },
-                                function(err) {
-                                   alert(err);
-                                }, {quality: 10,
-                            destinationType: Camera.DestinationType.FILE_URI});
-                    
+                    navigator.camera.getPicture(
+                            function(imageURI) {
+                                $('#myImage').attr('src', imageURI);
+                                var options = new FileUploadOptions();
+                                options.fileKey = "file";
+                                options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+                                options.mimeType = "image/jpeg";
+                                var params = new Object();
+                                params.value1 = "test";
+                                params.value2 = "param";
+                                options.params = params;
+                                var ft = new FileTransfer();
+                                ft.upload(imageURI, site+"save_image", function(){}, function(){}, options);
+                            },
+                            function(err) {
+                                alert(err);
+                            }, {quality: 10,
+                        destinationType: Camera.DestinationType.FILE_URI});
+
                 };
-               
+
                 var page = "getAccount";
                 $http.get(site + page)
                         .success(function(response) {
@@ -202,7 +211,7 @@ angular.module('myApp.controllers', [])
                     $http.get(site + page)
                             .success(function(response) {
                                 window.localStorage["msg"] = 'your account has been edited';
-                                $route.reload();
+                                location.reload();
 
                             });
 
