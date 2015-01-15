@@ -51,21 +51,22 @@ angular.module('myApp.controllers', [])
                 $scope.pageTitle = "My Account";
                
                 $scope.take_photo = function() {
+                    navigator.notification.alert('hi');
                     
-                        navigator.camera.getPicture(onSuccess, onFail, {
-                            quality: 60,
-                            destinationType: navigator.camera.DestinationType,
-                            sourceType: 1
-                        });
-                    
-
-                    function onSuccess(imageData) {
-                        var image = document.getElementById('myImage');
-                        image.src = "data:image/jpeg;base64," + imageData;
-                    }
-                    function onFail(message) {
-                        alert('Failed because ' + message);
-                    }
+//                        navigator.camera.getPicture(onSuccess, onFail, {
+//                            quality: 60,
+//                            destinationType: navigator.camera.DestinationType,
+//                            sourceType: 1
+//                        });
+//                    
+//
+//                    function onSuccess(imageData) {
+//                        var image = document.getElementById('myImage');
+//                        image.src = "data:image/jpeg;base64," + imageData;
+//                    }
+//                    function onFail(message) {
+//                        alert('Failed because ' + message);
+//                    }
                 };
 
                 var page = "getAccount";
