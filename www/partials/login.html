@@ -1,4 +1,9 @@
-    <div id="content">
+<div style='position: fixed' id="sp-nav"  ng-include="'partials/menu.html'"></div>
+
+<div style='position: fixed;height:auto' id="sp-page">
+    <div ng-include="'partials/header.html'"></div>
+</div>
+<div id="content">
         <br><br>
         <form ng-init="{wrongPasswod:false}" class='login-form' novalidate>
             <div ng-show="wrongPasswod"  class="alert alert-danger" role="alert"> The Username Or Password Is Incorrect</div>
@@ -12,7 +17,7 @@
         </form>
 
     </div>
-   
+   <div style='position: fixed;bottom:0' class="subFooter">Copyright 2013. All rights reserved.</div>
 
 
 

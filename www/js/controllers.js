@@ -214,32 +214,11 @@ angular.module('myApp.controllers', [])
 
                 $scope.contact_search = function()
                 {
-//                     ngDialog.open({ 
-//                         template: './partials/contact.html',
-//                         controller: 'ContactCtl',
-//                     });
+                     ngDialog.open({ 
+                         template: './partials/contact.html',
+                         controller: 'ContactCtl',
+                     });
 
-//The chooseContact method will open a new window with all you contacts
-                    navigator.contacts.chooseContact(
-
-                        //After picking a name you will receive the id of the chosen contact
-                        function(id){
-
-                            //In an options variable you can set some filter parameters
-                            //In this example we will use the Id to receive the data of the chosen contact
-                            var options = {
-                                filter: ""+id
-                            }
-
-                            //In the fields variable we're going to set the fields we want to receive
-                            //'*' = every data. More field values are explained
-                            // here: http://bit.ly/T8YyuE
-                            var fields = ['*'];
-
-                            navigator.contacts.find(fields, function(contacts){
-                                $scope.account.contact_number = contacts[0].name ;
-                            }, function(){}, options);
-                        }, null);
                 }
 
                 var page = "getAccount";
