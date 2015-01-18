@@ -41,6 +41,22 @@ angular.module('myApp.controllers', [])
 
                 };
             }])
+        .controller('ContactCtl', ['$scope', '$location', function($scope, $location) {
+               $scope.search = function()
+                {
+                    
+                    var options = new ContactFindOptions();
+                    options.filter = $scope.search_val ;
+                    options.multiple = true;
+                    var fields = ["displayName", "name"];
+                    navigator.contacts.find(fields, function(contacts){
+                        $scope.result = contacts ;
+                    }, function(contactError){
+                        alert('onError!');                        
+                    } , options);
+                     
+                } 
+            }])
         .controller('LogoutCtrl', ['$scope', '$location', function($scope, $location) {
                 localStorage.removeItem('username');
                 $scope.slide = 'slide-left';
@@ -158,7 +174,7 @@ angular.module('myApp.controllers', [])
                 }
 
             }])
-        .controller('MyAccountCtrl', ['$scope', '$http', '$route', 'checkLogin', function($scope, $http, $route, checkLogin) {
+        .controller('MyAccountCtrl', ['$scope','ngDialog', '$http', '$route', 'checkLogin', function($scope, ngDialog, $http, $route, checkLogin) {
                 $scope.pageTitle = "My Account";
                 $scope.image = '';
                 $scope.take_photo = function() {
@@ -175,7 +191,9 @@ angular.module('myApp.controllers', [])
                                 params.value2 = "param";
                                 options.params = params;
                                 var ft = new FileTransfer();
-                                ft.upload(imageURI, site+"save_image", function(){}, function(){}, options);
+                                ft.upload(imageURI, site + "save_image", function() {
+                                }, function() {
+                                }, options);
                             },
                             function(err) {
                                 alert(err);
@@ -184,7 +202,16 @@ angular.module('myApp.controllers', [])
 
                 };
 
+                $scope.contact_search = function()
+                {
+                     ngDialog.open({ 
+                         template: './partials/contact.html',
+                         controller: 'ContactCtl',
+                     });
+                }
+
                 var page = "getAccount";
+
                 $http.get(site + page)
                         .success(function(response) {
                             $scope.account = response;
@@ -193,16 +220,19 @@ angular.module('myApp.controllers', [])
                 $('#save').click(function() {
                     var u = $("#username").val();
                     var d = $("#details").val();
+                    var con = $("#contact_number").val();
+                    //navigator.notification.alert('your account has been edited successfully ');
 
-                    var page = "editAccount?u=" + u + "&d=" + d;
+                    var page = "editAccount?u=" + u + "&d=" + d + "&con=" + con;
                     $http.get(site + page)
                             .success(function() {
                                 $scope.showMsg = true;
-                                $scope.msg = 'your account has been edited' ;
-                                $scope.account.name = u ;
-                                $scope.account.details = d ;
-                                if($scope.image!='')
-                                    $scope.account.img =  $scope.image ;
+                                $scope.msg = 'your account has been edited';
+                                $scope.account.name = u;
+                                $scope.account.details = d;
+                                $scope.account.contact_number = con;
+                                if ($scope.image != '')
+                                    $scope.account.img = $scope.image;
                                 window.scrollTo(0, 0);
                             });
 

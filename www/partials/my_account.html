@@ -1,14 +1,9 @@
-<div id="sp-nav"  ng-include="'partials/menu.html'"></div>
-
-<div id="sp-page">
-    <div ng-include="'partials/header.html'"></div>
-
     <div id="content" style="text-align:center;" >
         <div ng-show="showMsg"  class="alert alert-success" role="alert"> {{msg}}</div>
 
         <div class="o-team">
             <div class="o-team-person" style="width: auto">
-                <img style="max-width: 30%;" src="{{account.img}}" />
+                <img style="max-width: 30%;" ng-src="{{account.img}}" />
                 <h4>{{account.name}}</h4>
                 <div class="h-line50"></div>
                 <p>{{account.details}}</p>
@@ -21,27 +16,23 @@
             <div class="o-team-person" style="width: auto">
                 <h5>Edit Account</h5>
             </div>
+            <label>user name</label>
             <input type="text" class="form-control" name="username" id="username" value="{{account.name}}" />
-            <input type="text" class="form-control" name="details" id="details" value="{{account.details}}" />
-
-            <img id="myImage" style='width:100px' src="{{account.img}}" /> 
-            <input type="button" class="btn btn-warning " ng-click="take_photo()" value="Take a photo" />
+            <br/>
             
+            <label>details</label>
+            <input type="text" class="form-control" name="details" id="details" value="{{account.details}}" />
+            <br/>
+            
+            <label>contact number</label>
+            <input type="text" style='width:88%;float:left;' class="form-control" name="contact_number" id="contact_number" value="{{account.contact_number}}" />
+            <input type="button" class="btn btn-warning " ng-click="contact_search()" value="search in contacts" />
 
-            <!--<button ng-model='myPicture'>Take Picture</button>-->
+            <div class='clear' /></div>
+            <br/>
 
-
-<!--            <button camera ng-model='myPicture'>Take Picture</button>
-
-            <ul ng-repeat="onepic in myPictures">
-                <li style="list-style: none">
-                    <input type="image" 
-                           src="{{onepic}}" 
-                           width="250" 
-                           height="390" 
-                           alt="error"/>
-                </li>
-            </ul>-->
+            <img id="myImage" style='width:100px' ng-src="{{account.img}}" /> 
+            <input type="button" class="btn btn-warning " ng-click="take_photo()" value="Take a photo" />
             
             <br/><br/>
             <input type="button" class="btn btn-primary"  id="save" value="save" name="save"  />
@@ -49,5 +40,4 @@
 
     </div>
 
-    <div class="subFooter">Copyright 2013. All rights reserved.</div>
-</div>
+  

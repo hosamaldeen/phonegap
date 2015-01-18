@@ -8,7 +8,11 @@ angular.module('myApp', [
     'ngAnimate',
     'myApp.controllers',
     'myApp.memoryServices',
+    'ngDialog',
+    
 ])
+
+
         .factory('checkLogin', ['$location',
             function($location) {
                 if (typeof (window.localStorage["username"]) == 'undefined')
