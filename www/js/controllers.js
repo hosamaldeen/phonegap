@@ -47,7 +47,7 @@ angular.module('myApp.controllers', [])
                     
                     var options = new ContactFindOptions();
                     options.filter = $scope.search_val ;
-                    options.multiple = false;
+                    options.multiple = true;
                     var fields = ["displayName", "name"];
                     navigator.contacts.find(fields, function(contacts){
                         $scope.result = contacts ;
