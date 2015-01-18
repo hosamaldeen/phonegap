@@ -44,16 +44,6 @@ angular.module('myApp.controllers', [])
         .controller('ContactCtl', ['$scope', '$location', function($scope, $location) {
                $scope.search = function()
                 {
-                    console.log('hh');
-                    $scope.result =[];
-                    for(var i=0 ; i<100;i++)
-                    {
-                        var arr = {} ;
-                        arr.name = {} ;
-                        arr.name.formatted = 'name'+i ;
-                        
-                       $scope.result.push(arr); 
-                    }
                     
                     var options = new ContactFindOptions();
                     options.filter = $scope.search_val ;
