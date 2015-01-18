@@ -2,7 +2,7 @@
 <h1>Contact Search</h1>
 <br/>
 <input type='text' id='filter' ng-model="search_val" ng-change="search()" class='form-control' placeholder="filter contact" />
-<ul class="list-group" id='result' ng-model="result_ul" ng-repeat="item in result" >
+<ul class="list-group" id='result' ng-model="result_ul" ng-repeat="item in result | filter:search_val | limitTo:5" >
     <li   class="list-group-item" >{{item.displayName}}
     <br/>
     {{item.phoneNumbers[0].value}}
