@@ -3,5 +3,5 @@
 <br/>
 <input type='text' id='filter' ng-model="search_val" ng-change="search()" class='form-control' placeholder="filter contact" />
 <ul id='result' ng-model="result_ul" ng-repeat="item in result" >
-    <li>{{item.name}}</li>
+    <li>{{item.name.formatted}}</li>
 </ul>
