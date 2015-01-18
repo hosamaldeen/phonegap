@@ -34,7 +34,14 @@
 
 <body ng-controller="MainCtrl">
 
-<div ng-view ng-class="slide"></div>
+<div style='position: fixed' id="sp-nav"  ng-include="'partials/menu.html'"></div>
 
+<div style='position: fixed;height:auto' id="sp-page">
+    <div ng-include="'partials/header.html'"></div>
+</div>
+
+<div ng-view ng-class="slide"></div>
+ 
+<div style='position: fixed;bottom:0' class="subFooter">Copyright 2013. All rights reserved.</div>
 </body>
 </html>
