@@ -198,7 +198,7 @@ angular.module('myApp.controllers', [])
                 }
 
             }])
-        .controller('MyAccountCtrl', ['$scope' ,'$rootScope','ngDialog', 'localNotification' , '$http', '$route', 'checkLogin', function($scope, $rootScope , ngDialog, localNotification ,$http, $route, checkLogin) {
+        .controller('MyAccountCtrl', ['$scope' ,'$rootScope','ngDialog',  '$http', '$route', 'checkLogin', function($scope, $rootScope , ngDialog, $http, $route, checkLogin) {
                 $scope.pageTitle = "My Account";
                 $scope.image = '';
                 $scope.take_photo = function() {
@@ -225,11 +225,6 @@ angular.module('myApp.controllers', [])
                         destinationType: Camera.DestinationType.FILE_URI});
 
                 };
-
-                localNotification.add(103, {
-    seconds: 30,
-    message: "This is an example",
-    badge: 1});
 
                 $scope.contact_search = function()
                 {
