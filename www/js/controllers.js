@@ -72,7 +72,7 @@ angular.module('myApp.controllers', [])
                     options.filter =  ""+id ;
                     var fields = ["id" , "displayName","phoneNumbers"];
                     navigator.contacts.find(fields, function(contacts){
-                        $scope.phoneNumbers = contacts.phoneNumbers ;
+                        $scope.result = contacts ;
                         $scope.contact_hide = true ;
                         $scope.contact_number = false ;
                     }, function(contactError){

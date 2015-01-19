@@ -11,9 +11,9 @@
     </a>
 </div>
 
-<div ng-show='contact_number' class="list-group" id='result' ng-model="result_ul"  >
-    <a class='list-group-item disabled' > {{item.displayName}} </a>
-    <a ng-click="select_number(number.value)"  style='cursor: pointer;text-decoration:none' ng-repeat="phoneNumbers in number "   class="list-group-item" >
+<div ng-show='contact_number' class="list-group" id='result' ng-model="result_ul2"  >
+    <a class='list-group-item disabled' > {{result[0].displayName}} </a>
+    <a ng-click="select_number(number.value)"  style='cursor: pointer;text-decoration:none' ng-repeat="result[0].phoneNumbers in number "   class="list-group-item" >
     {{number.value}}   
     </a>
 </div>
