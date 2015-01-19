@@ -40,7 +40,7 @@
     // Handle the pause event
     //
     function onPause() {
-        navigator.notification.alert('hello');
+        window.plugin.notification.local.add({ message: 'the app has been closed!' });
     }
     </script>
    
