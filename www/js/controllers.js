@@ -68,15 +68,18 @@ angular.module('myApp.controllers', [])
                 } 
                 
                 $scope.show_numbers = function(id){
-                   
                     var options = new ContactFindOptions();
                     options.filter =  ""+id ;
                     var fields = ["id" , "displayName","phoneNumbers"];
                     navigator.contacts.find(fields, function(contacts){
-                        $scope.result = contacts ;
+                        $scope.phoneNumbers = contacts.phoneNumbers ;
+                        $scope.contact_hide = true ;
+                        $scope.contact_number = false ;
                     }, function(contactError){
                         alert('onError!');                        
                     } , options);
+                    
+                    
                 }
                     
                 $scope.select_number = function(number){
