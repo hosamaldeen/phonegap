@@ -31,7 +31,7 @@ angular.module('myApp', [
                 $routeProvider.when('/logout', {templateUrl: 'partials/login.html', controller: 'LogoutCtrl'});
                 $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'HomeCtrl'});
                 $routeProvider.when('/my_account', {templateUrl: 'partials/my_account.html', controller: 'MyAccountCtrl'});
-                $routeProvider.when('/take_photo', {templateUrl: 'partials/take_photo.html', controller: 'TakePhotoCtrl'});
+                $routeProvider.when('/contact_us', {templateUrl: 'partials/contact_us.html', controller: 'ContactUsCtrl'});
                 $routeProvider.otherwise({redirectTo: '/home'});
             }])
         
