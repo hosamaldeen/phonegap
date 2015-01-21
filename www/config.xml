@@ -44,6 +44,7 @@
     <gap:plugin name="org.apache.cordova.vibration" /> 
     <gap:plugin name="de.appplant.cordova.plugin.local-notification" />
     <gap:plugin name="de.appplant.cordova.plugin.email-composer" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />

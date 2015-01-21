@@ -95,7 +95,7 @@ angular.module('myApp.controllers', [])
                         subject: $scope.title,
                         body: $scope.msg
                     });
-                    alert('your email has been sent');
+                    
                 }   
 
             }])
