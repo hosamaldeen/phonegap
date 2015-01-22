@@ -20,6 +20,31 @@ angular.module('myApp.controllers', [])
                             $scope.articles = response;
                         });
             }])
+        .controller('MyLocationCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
+                $scope.pageTitle = "My Location";
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var myLatlng = new google.maps.LatLng(position.coords.latitude , position.coords.longitude);
+                    
+                    var mapOptions = {
+                        zoom: 17,
+                        center: myLatlng
+                    }
+                    
+                    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        title: 'Hello World!'
+                    });
+
+                }, function() {
+
+                }
+                );
+
+
+            }])
         .controller('LoginCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
                 $scope.pageTitle = "Login";
                 $scope.hideMenu = true;
@@ -41,13 +66,13 @@ angular.module('myApp.controllers', [])
 
                 };
             }])
-        .controller('ContactCtl', ['$scope', '$rootScope' ,'ngDialog', function($scope, $rootScope , ngDialog) {
-                $scope.contact_hide = false ;
-                $scope.contact_number = false ;     
-               $scope.search = function()
+        .controller('ContactCtl', ['$scope', '$rootScope', 'ngDialog', function($scope, $rootScope, ngDialog) {
+                $scope.contact_hide = false;
+                $scope.contact_number = false;
+                $scope.search = function()
                 {
-                    $scope.contact_hide = false ;
-                    $scope.contact_number = false ;     
+                    $scope.contact_hide = false;
+                    $scope.contact_number = false;
 //                    var contacts = [] ;
 //                    for(var i =0 ; i<10;i++)
 //                    {
@@ -60,26 +85,26 @@ angular.module('myApp.controllers', [])
 //                      $scope.result = contacts ;   
 
                     var options = new ContactFindOptions();
-                    options.filter = $scope.search_val ;
+                    options.filter = $scope.search_val;
                     options.multiple = true;
-                    var fields = ["id" , "displayName","phoneNumbers"];
-                    navigator.contacts.find(fields, function(contacts){
-                        $scope.result = contacts ;
-                    }, function(contactError){
-                        alert('onError!');                        
-                    } , options);                    
-                } 
-                
-                $scope.show_numbers = function(contact){
-                        $scope.contact = contact ;
-                        $scope.contact_hide = true ;
-                        $scope.contact_number = true ;                    
+                    var fields = ["id", "displayName", "phoneNumbers"];
+                    navigator.contacts.find(fields, function(contacts) {
+                        $scope.result = contacts;
+                    }, function(contactError) {
+                        alert('onError!');
+                    }, options);
                 }
-                    
-                $scope.select_number = function(number){
-                     $rootScope.contact_number = number ;    
-                        ngDialog.closeAll();
-                }   
+
+                $scope.show_numbers = function(contact) {
+                    $scope.contact = contact;
+                    $scope.contact_hide = true;
+                    $scope.contact_number = true;
+                }
+
+                $scope.select_number = function(number) {
+                    $rootScope.contact_number = number;
+                    ngDialog.closeAll();
+                }
             }])
         .controller('LogoutCtrl', ['$scope', '$location', function($scope, $location) {
                 localStorage.removeItem('username');
@@ -88,18 +113,18 @@ angular.module('myApp.controllers', [])
 
             }])
         .controller('ContactUsCtrl', ['$scope', '$location', function($scope, $location) {
-                $scope.send_mail = function (){
-                    
+                $scope.send_mail = function() {
+
                     window.plugin.email.open({
                         to: ['hosam_aldeen2000@yahoo.com'],
                         subject: $scope.title,
                         body: $scope.msg
                     });
-                    
-                }   
+
+                }
 
             }])
-        .controller('MyAccountCtrl', ['$scope' ,'$rootScope','ngDialog',  '$http', '$route', 'checkLogin', function($scope, $rootScope , ngDialog, $http, $route, checkLogin) {
+        .controller('MyAccountCtrl', ['$scope', '$rootScope', 'ngDialog', '$http', '$route', 'checkLogin', function($scope, $rootScope, ngDialog, $http, $route, checkLogin) {
                 $scope.pageTitle = "My Account";
                 $scope.image = '';
                 $scope.take_photo = function() {
@@ -129,10 +154,10 @@ angular.module('myApp.controllers', [])
 
                 $scope.contact_search = function()
                 {
-                     ngDialog.open({ 
-                         template: './partials/contact.html',
-                         controller: 'ContactCtl',
-                     });
+                    ngDialog.open({
+                        template: './partials/contact.html',
+                        controller: 'ContactCtl',
+                    });
 
                 }
 
@@ -163,9 +188,9 @@ angular.module('myApp.controllers', [])
                             });
 
                 });
-                
-                $rootScope.$on('ngDialog.closing', function (e, $dialog) {
-                    $scope.account.contact_number = $rootScope.contact_number ;
+
+                $rootScope.$on('ngDialog.closing', function(e, $dialog) {
+                    $scope.account.contact_number = $rootScope.contact_number;
                 });
 
             }])

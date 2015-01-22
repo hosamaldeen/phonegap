@@ -29,6 +29,7 @@ angular.module('myApp', [
         .config(['$routeProvider', function($routeProvider) {
                 $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'LoginCtrl'});
                 $routeProvider.when('/logout', {templateUrl: 'partials/login.html', controller: 'LogoutCtrl'});
+                $routeProvider.when('/my_location', {templateUrl: 'partials/my_location.html', controller: 'MyLocationCtrl'});
                 $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'HomeCtrl'});
                 $routeProvider.when('/my_account', {templateUrl: 'partials/my_account.html', controller: 'MyAccountCtrl'});
                 $routeProvider.when('/contact_us', {templateUrl: 'partials/contact_us.html', controller: 'ContactUsCtrl'});
