@@ -23,8 +23,8 @@ angular.module('myApp.controllers', [])
         .controller('MyLocationCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
                 $scope.pageTitle = "My Location";
                 navigator.geolocation.getCurrentPosition(function(position) {
-                      alert('here');
-                      alert(position.coords.latitude);
+                      navigator.notification.alert('here');
+                      navigator.notification.alert(position.coords.latitude);
 //                    var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 //
 //                    var mapOptions = {
@@ -41,7 +41,7 @@ angular.module('myApp.controllers', [])
 //                    });
 
                 }, function(error) {
-                    alert('code: ' + error.code + '\n' +
+                    navigator.notification.alert('code: ' + error.code + '\n' +
                             'message: ' + error.message + '\n');
                 }
 
