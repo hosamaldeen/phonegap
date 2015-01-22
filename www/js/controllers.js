@@ -25,20 +25,20 @@ angular.module('myApp.controllers', [])
                 navigator.geolocation.getCurrentPosition(function(position) {
                       alert('here');
                       alert(position.coords.latitude);
-                    var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-                    var mapOptions = {
-                        zoom: 17,
-                        center: myLatlng
-                    }
-
-                    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-                    var marker = new google.maps.Marker({
-                        position: myLatlng,
-                        map: map,
-                        title: 'Hello World!'
-                    });
+//                    var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+//
+//                    var mapOptions = {
+//                        zoom: 17,
+//                        center: myLatlng
+//                    }
+//
+//                    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+//
+//                    var marker = new google.maps.Marker({
+//                        position: myLatlng,
+//                        map: map,
+//                        title: 'Hello World!'
+//                    });
 
                 }, function(error) {
                     alert('code: ' + error.code + '\n' +
