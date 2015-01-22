@@ -24,26 +24,24 @@ angular.module('myApp.controllers', [])
                 $scope.pageTitle = "My Location";
                 navigator.geolocation.getCurrentPosition(function(position) {
                       
-                      $("#status").append('<li>here</li>');
-                      //navigator.notification.alert(position.coords.latitude);
-//                    var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-//
-//                    var mapOptions = {
-//                        zoom: 17,
-//                        center: myLatlng
-//                    }
-//
-//                    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-//
-//                    var marker = new google.maps.Marker({
-//                        position: myLatlng,
-//                        map: map,
-//                        title: 'Hello World!'
-//                    });
+                    var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                    var mapOptions = {
+                        zoom: 17,
+                        center: myLatlng
+                    }
+
+                    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        title: 'Hello World!'
+                    });
 
                 }, function(error) {
-                    $("#status").append('<li>error</li>');
-                    $("#status").append('<li>'+error.message+'</li>');
+                    
+                    alert(error.message);
                     
                 }
 
