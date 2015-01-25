@@ -51,10 +51,19 @@
             }
 
             function onKeyboardShow() {
-                 
-                var scroll = $(window).scrollTop();
-                alert(scroll);
+
             }
+            $(document).ready(function(){
+                 
+                $(document).on('mousedown' , 'input' , function(){
+                       console.log('2');
+                       var me = $(this) ;
+                         $('html, body').animate({
+                            scrollTop: parseInt(me.offset().top)-95
+                        }, 500);
+                   });
+            })
+            
 
             // Handle the pause event
             //
@@ -207,9 +216,11 @@
     </head>
 
     <body ng-controller="MainCtrl">
+        
         <div class="view-animate-container">
             <div ng-view ng-class="slide"></div>
         </div>
+        <input type="text">
     </body>
 </html>
 
