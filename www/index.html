@@ -47,16 +47,17 @@
             }
             
             function onKeyboardHide() {
-                    //console.log('onKeyboardHide');
+                $("#sp-page").show();
+                $(".subFooter").show();
             }
 
             function onKeyboardShow() {
-
+                $("#sp-page").hide();
+                $(".subFooter").hide();
             }
             $(document).ready(function(){
                  
                 $(document).on('mousedown' , 'input' , function(){
-                       console.log('2');
                        var me = $(this) ;
                          $('html, body').animate({
                             scrollTop: parseInt(me.offset().top)-95
