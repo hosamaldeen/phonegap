@@ -39,6 +39,19 @@
             //
             function onDeviceReady() {
                 document.addEventListener("pause", onPause, false);
+                
+                document.addEventListener('hidekeyboard', onKeyboardHide, false);
+                
+                document.addEventListener('showkeyboard', onKeyboardShow, false);
+     
+            }
+            
+            function onKeyboardHide() {
+                    //console.log('onKeyboardHide');
+            }
+
+            function onKeyboardShow() {
+                   //alert();
             }
 
             // Handle the pause event
